@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import characters from './characters';
+
 import Header from './components/Header';
+import MainCharacters from './components/MainCharacters';
 
 class App extends Component {
   state = {
     characters: {}
   };
 
-  loadSampleFishes = () => {
-    this.setState({ characters });
-  };
+  componentDidMount() {}
 
   render() {
     return (
-    <div className="container">
-      <Header></Header>
-    </div>
+      <div className="container">
+        <Header />
+        <div className="row">
+          <MainCharacters></MainCharacters>
+        </div>
+      </div>
     );
   }
 }
