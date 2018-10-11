@@ -2,6 +2,7 @@
 $enable-gradients: true;
 $component-active-bg: #343a40;
 $link-color: #ffc107;
+$gray-800: rgba(52, 58, 64, .6);
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
@@ -15,6 +16,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('./img/thumb-1920-107763.jpg');
+  background-size: cover;
 }
 
 code {
