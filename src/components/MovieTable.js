@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
+import MovieDetail from './MovieDetail';
 
-class MovieDetails extends Component {
+class MovieTable extends Component {
   render() {
     return (
       <Table dark className="bg-gradient-dark">
@@ -13,10 +14,7 @@ class MovieDetails extends Component {
         </thead>
         <tbody>
           {this.props.charMovies.films.map(film => (
-            <tr key={film.episode_id}>
-              <td>{film.title}</td>
-              <td>{film.release_date}</td>
-            </tr>
+            <MovieDetail key={film.episode_id} title={film.title} date={film.release_date}></MovieDetail>
           ))}
         </tbody>
       </Table>
@@ -24,4 +22,4 @@ class MovieDetails extends Component {
   }
 }
 
-export default MovieDetails;
+export default MovieTable;

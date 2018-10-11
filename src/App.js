@@ -3,7 +3,7 @@ import './App.scss';
 
 import Header from './components/Header';
 import MainCharacters from './components/MainCharacters';
-import MovieDetails from './components/MovieDetails';
+import MovieTable from './components/MovieTable';
 class App extends Component {
   state = {
     charSelected: '',
@@ -56,9 +56,9 @@ class App extends Component {
             />
           </div>
           <div className="col-9">
-            {!!this.state.charSelected ? <MovieDetails
-              charMovies={this.state}
-            /> : null }
+            {!!this.state.charSelected ? (
+              <MovieTable charMovies={this.state} />
+            ) : null}
           </div>
         </div>
       </div>
