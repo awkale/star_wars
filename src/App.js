@@ -4,9 +4,10 @@ import './App.scss';
 import Header from './components/Header';
 import MainCharacters from './components/MainCharacters';
 import MovieTable from './components/MovieTable';
+import NoData from './components/NoData';
 class App extends Component {
   state = {
-    charSelected: '',
+    selectedCharacter: '',
     filmLinks: [],
     error: null,
     films: []
@@ -14,20 +15,24 @@ class App extends Component {
 
   getCharInfo = (name, url) => {
     fetch(url)
-      .then(data => data.json())
+      .then(this.handleErrors)
+      .then(response => response.json())
       .then(json => {
-        if (json.detail) {
-          alert(`Error: ${json.detail} (${url})`);
-        } else {
-          this.setState(
-            {
-              charSelected: name,
-              filmLinks: json.films,
-              films: []
-            },
-            this.fetchMovies(json.films)
-          );
-        }
+        this.setState(
+          {
+            selectedCharacter: name,
+            filmLinks: json.films,
+            error: null,
+            films: []
+          },
+          this.fetchMovies(json.films)
+        );
+      })
+      .catch(error => {
+        this.setState({
+          selectedCharacter: name,
+          error: error
+        });
       });
   };
 
@@ -44,6 +49,13 @@ class App extends Component {
     );
   };
 
+  handleErrors = response => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response;
+  }
+
   render() {
     return (
       <div className="container">
@@ -52,13 +64,16 @@ class App extends Component {
           <div className="col-3">
             <MainCharacters
               getCharInfo={this.getCharInfo}
-              charSelected={this.state.charSelected}
+              selectedCharacter={this.state.selectedCharacter}
             />
           </div>
           <div className="col-9">
-            {!!this.state.charSelected ? (
+            {this.state.error === null ? (
               <MovieTable charMovies={this.state} />
             ) : null}
+            {this.state.error ? (
+              <NoData currentCharacter={this.state.selectedCharacter}></NoData>
+            ) : null }
           </div>
         </div>
       </div>

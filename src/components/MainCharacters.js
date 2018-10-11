@@ -11,7 +11,7 @@ class MainCharacters extends Component {
             <NavItem key={i}>
               <NavLink
                 href="#"
-                active={char.name === this.props.charSelected}
+                active={char.name === this.props.selectedCharacter}
                 onClick={() => this.props.getCharInfo(char.name, char.url)}
               >
                 {char.name}
