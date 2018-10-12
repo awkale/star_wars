@@ -7,6 +7,9 @@ $gray-800: rgba(52, 58, 64, .6);
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
 
+html {
+  height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
@@ -17,6 +20,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url('./img/thumb-1920-107763.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
 }
 
 code {
