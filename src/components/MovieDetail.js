@@ -8,6 +8,7 @@ class MovieDetail extends Component {
     return (
       <tr>
         <td>{this.props.title}</td>
+        <td>{this.props.director}</td>
         <td>
           <Moment format="dddd, MMMM Do YYYY">{this.props.date}</Moment>
         </td>
