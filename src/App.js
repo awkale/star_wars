@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import React, { Component } from 'react';
 import './App.scss';
 
@@ -14,6 +15,11 @@ class App extends Component {
     films: [],
     count: 0
   };
+
+  componentDidMount() {
+    ReactGA.initialize('UA-171213-16');
+    ReactGA.pageview('/');
+  }
 
   getCharInfo = (name, url) => {
     fetch(url)
@@ -71,17 +77,14 @@ class App extends Component {
             />
           </div>
           <div className="col-sm-9">
-
             {this.state.error === null ? (
               <MovieTable charMovies={this.state} />
-            ) : <NoData currentCharacter={this.state.selectedCharacter} />
-            }
+            ) : (
+              <NoData currentCharacter={this.state.selectedCharacter} />
+            )}
           </div>
         </div>
-        { this.state.count > 2 ?
-        <Yoda></Yoda>
-        : null
-        }
+        {this.state.count > 2 ? <Yoda /> : null}
       </div>
     );
   }
