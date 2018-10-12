@@ -18,9 +18,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('./img/thumb-1920-107763.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url('./img/thumb-1920-107763.jpg') no-repeat center center fixed;
   height: 100%;
 }
 
@@ -28,3 +26,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+@include media-breakpoint-down(md) {
+  h1.display-3 {
+    font-size: 3.5rem;
+  }
+ }
