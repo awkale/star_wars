@@ -32,3 +32,15 @@ code {
     font-size: 3.5rem;
   }
  }
+
+ .yoda {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 300px;
+}
+
+.tooltip-inner {
+  background: $warning;
+  color: #000
+}

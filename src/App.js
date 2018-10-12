@@ -5,12 +5,14 @@ import Header from './components/Header';
 import MainCharacters from './components/MainCharacters';
 import MovieTable from './components/MovieTable';
 import NoData from './components/NoData';
+import Yoda from './components/Yoda';
 class App extends Component {
   state = {
     selectedCharacter: '',
     filmLinks: [],
     error: null,
-    films: []
+    films: [],
+    count: 0
   };
 
   getCharInfo = (name, url) => {
@@ -23,7 +25,8 @@ class App extends Component {
             selectedCharacter: name,
             filmLinks: json.films,
             error: null,
-            films: []
+            films: [],
+            count: this.state.count + 1
           },
           this.fetchMovies(json.films)
         );
@@ -54,7 +57,7 @@ class App extends Component {
       throw Error(response.statusText);
     }
     return response;
-  }
+  };
 
   render() {
     return (
@@ -68,14 +71,17 @@ class App extends Component {
             />
           </div>
           <div className="col-sm-9">
+
             {this.state.error === null ? (
               <MovieTable charMovies={this.state} />
-            ) : null}
-            {this.state.error ? (
-              <NoData currentCharacter={this.state.selectedCharacter}></NoData>
-            ) : null }
+            ) : <NoData currentCharacter={this.state.selectedCharacter} />
+            }
           </div>
         </div>
+        { this.state.count > 2 ?
+        <Yoda></Yoda>
+        : null
+        }
       </div>
     );
   }
