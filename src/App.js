@@ -1,5 +1,5 @@
-import ReactGA from 'react-ga';
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import './App.scss';
 
 import Header from './components/Header';
@@ -22,6 +22,10 @@ class App extends Component {
   }
 
   getCharInfo = (name, url) => {
+    ReactGA.event({
+      category: 'User',
+      action: `Clicked ${name}`
+    });
     fetch(url)
       .then(this.handleErrors)
       .then(response => response.json())

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import yoda from '../img/yoda.png';
 import { Tooltip } from 'reactstrap';
 
@@ -8,6 +9,10 @@ class Yoda extends Component {
   };
 
   toggle = () => {
+    ReactGA.event({
+      category: 'User',
+      action: 'Hovered Yoda'
+    });
     this.setState({
       tooltipOpen: !this.state.tooltipOpen
     });
@@ -24,7 +29,10 @@ class Yoda extends Component {
           target="Tooltip"
           toggle={this.toggle}
         >
-          <p>Looking? Found someone you have, eh? <br></br>Alex Kale the Force has.</p>
+          <p>
+            Looking? Found someone you have, eh? <br />
+            Alex Kale the Force has.
+          </p>
           <p>May the Force be with you.</p>
         </Tooltip>
       </div>
