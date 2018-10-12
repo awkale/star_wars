@@ -61,13 +61,13 @@ class App extends Component {
       <div className="container">
         <Header />
         <div className="row">
-          <div className="col-3">
+          <div className="col-sm-3">
             <MainCharacters
               getCharInfo={this.getCharInfo}
               selectedCharacter={this.state.selectedCharacter}
             />
           </div>
-          <div className="col-9">
+          <div className="col-sm-9">
             {this.state.error === null ? (
               <MovieTable charMovies={this.state} />
             ) : null}
