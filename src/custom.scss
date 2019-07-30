@@ -18,7 +18,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url('./img/thumb-1920-107763.jpg') no-repeat center center fixed;
+  background-image: url('./img/thumb-1920-107763.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
   height: 100%;
 }
 
